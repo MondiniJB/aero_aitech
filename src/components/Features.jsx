@@ -1,26 +1,28 @@
 import { Users, MapPin, Zap, ShieldCheck } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Features = () => {
+  const { t } = useLanguage();
   const features = [
     {
       icon: <Users size={32} color="var(--brand-red)" />,
-      title: "Capacidad para 5/6 Personas",
-      description: "Viaja con tu equipo, familia o amigos con total comodidad en nuestra moderna aeronave."
+      title: t('feat1Title'),
+      description: t('feat1Desc')
     },
     {
       icon: <MapPin size={32} color="var(--brand-red)" />,
-      title: "Destinos a Medida",
-      description: "Vuelos por toda la Provincia de Salta y provincias vecinas. Tú eliges el destino, nosotros te llevamos."
+      title: t('feat2Title'),
+      description: t('feat2Desc')
     },
     {
       icon: <Zap size={32} color="var(--brand-red)" />,
-      title: "Sin Demoras",
-      description: "Evita las largas filas y tiempos de espera de los vuelos comerciales. Optimiza tu tiempo al máximo."
+      title: t('feat3Title'),
+      description: t('feat3Desc')
     },
     {
       icon: <ShieldCheck size={32} color="var(--brand-red)" />,
-      title: "Seguridad y Privacidad",
-      description: "Viaja con total discreción y los más altos estándares de seguridad aeronáutica."
+      title: t('feat4Title'),
+      description: t('feat4Desc')
     }
   ];
 
@@ -28,9 +30,9 @@ const Features = () => {
     <section id="servicios" style={{ padding: '6rem 0', backgroundColor: 'var(--bg-secondary)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>¿Por qué volar con <span style={{ color: 'var(--brand-red)' }}>Aero Aitech?</span></h2>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>{t('featTitle')} <span style={{ color: 'var(--brand-red)' }}>Aero Aitech?</span></h2>
           <p style={{ fontSize: '1.125rem', color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto' }}>
-            Ofrecemos un servicio de vuelos charter diseñado para quienes valoran su tiempo, la privacidad y el confort.
+            {t('featDesc')}
           </p>
         </div>
 
@@ -42,7 +44,7 @@ const Features = () => {
               style={{ 
                 padding: '2rem', 
                 borderRadius: '16px', 
-                backgroundColor: 'white',
+                backgroundColor: 'var(--surface-color)',
                 boxShadow: 'var(--shadow-md)',
                 transition: 'transform 0.3s ease',
                 cursor: 'default'

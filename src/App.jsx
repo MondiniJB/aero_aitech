@@ -4,6 +4,10 @@ import Hero from './components/Hero';
 import Features from './components/Features';
 import Gallery from './components/Gallery';
 import Footer from './components/Footer';
+import FloatingWhatsapp from './components/FloatingWhatsapp';
+
+import { LanguageProvider } from './context/LanguageContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   // Manejo de Smooth Scrolling para anclas (links internos)
@@ -32,13 +36,16 @@ function App() {
   }, []);
 
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <Features />
-      <Gallery />
-      <Footer />
-    </>
+    <ThemeProvider>
+      <LanguageProvider>
+        <Navbar />
+        <Hero />
+        <Features />
+        <Gallery />
+        <Footer />
+        <FloatingWhatsapp />
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
 

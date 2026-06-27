@@ -1,6 +1,8 @@
 import { Plane } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
   const whatsappNumber = "1156197908";
   const whatsappLink = `https://wa.me/549${whatsappNumber}?text=Hola,%20quisiera%20informaci%C3%B3n%20sobre%20vuelos%20privados.`;
 
@@ -11,32 +13,42 @@ const Footer = () => {
           
           {/* Brand */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
-              <div style={{ backgroundColor: 'var(--brand-red)', padding: '0.5rem', borderRadius: '8px', color: 'white' }}>
-                <Plane size={24} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.5rem' }}>
+              <div style={{ 
+                backgroundColor: 'var(--brand-red)', 
+                width: '38px',
+                height: '38px',
+                borderRadius: '8px', 
+                color: 'white',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}>
+                <Plane size={22} />
               </div>
-              <span style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '1px' }}>
+              <span style={{ fontSize: '1.4rem', fontWeight: 800, letterSpacing: '1px', color: 'white', lineHeight: 1 }}>
                 AERO <span style={{ color: 'var(--brand-red)' }}>AITECH</span>
               </span>
             </div>
             <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>
-              Vuelos privados por toda la Provincia de Salta y Provincias vecinas. Piloto Comercial Daniel Luna.
+              {t('footDesc')}
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h4 style={{ fontSize: '1.125rem', marginBottom: '1.5rem', fontWeight: 600 }}>Navegación</h4>
+            <h4 style={{ fontSize: '1.125rem', marginBottom: '1.5rem', fontWeight: 600 }}>{t('footNav')}</h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <li><a href="#" style={{ color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s ease' }} onMouseEnter={e=>e.target.style.color='white'} onMouseLeave={e=>e.target.style.color='rgba(255,255,255,0.7)'}>Inicio</a></li>
-              <li><a href="#servicios" style={{ color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s ease' }} onMouseEnter={e=>e.target.style.color='white'} onMouseLeave={e=>e.target.style.color='rgba(255,255,255,0.7)'}>Servicios</a></li>
-              <li><a href="#galeria" style={{ color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s ease' }} onMouseEnter={e=>e.target.style.color='white'} onMouseLeave={e=>e.target.style.color='rgba(255,255,255,0.7)'}>El Avión</a></li>
+              <li><a href="#" style={{ color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s ease' }} onMouseEnter={e=>e.target.style.color='white'} onMouseLeave={e=>e.target.style.color='rgba(255,255,255,0.7)'}>{t('footHome')}</a></li>
+              <li><a href="#servicios" style={{ color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s ease' }} onMouseEnter={e=>e.target.style.color='white'} onMouseLeave={e=>e.target.style.color='rgba(255,255,255,0.7)'}>{t('navServices')}</a></li>
+              <li><a href="#galeria" style={{ color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s ease' }} onMouseEnter={e=>e.target.style.color='white'} onMouseLeave={e=>e.target.style.color='rgba(255,255,255,0.7)'}>{t('navAircraft')}</a></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 style={{ fontSize: '1.125rem', marginBottom: '1.5rem', fontWeight: 600 }}>Contacto</h4>
+            <h4 style={{ fontSize: '1.125rem', marginBottom: '1.5rem', fontWeight: 600 }}>{t('footContact')}</h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <li style={{ color: 'rgba(255,255,255,0.7)' }}>
                 <span style={{ display: 'block', fontSize: '0.875rem', marginBottom: '0.25rem' }}>WhatsApp</span>
@@ -55,7 +67,7 @@ const Footer = () => {
         </div>
 
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem', textAlign: 'center', color: 'rgba(255,255,255,0.5)', fontSize: '0.875rem' }}>
-          <p>&copy; {new Date().getFullYear()} Aero Aitech. Todos los derechos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} Aero Aitech. {t('footRights')}</p>
         </div>
       </div>
     </footer>

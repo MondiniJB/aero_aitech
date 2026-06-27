@@ -1,6 +1,8 @@
 import avion2 from '../assets/avion2.jpg';
+import { useLanguage } from '../context/LanguageContext';
 
 const Gallery = () => {
+  const { t } = useLanguage();
   return (
     <section id="galeria" style={{ padding: '6rem 0', backgroundColor: 'var(--bg-primary)' }}>
       <div className="container">
@@ -36,17 +38,17 @@ const Gallery = () => {
 
           <div>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>
-              Nuestra <span style={{ color: 'var(--brand-blue)' }}>Aeronave</span>
+              {t('galTitlePrefix')} <span style={{ color: 'var(--brand-blue)' }}>{t('galTitleHighlight')}</span>
             </h2>
             <p style={{ fontSize: '1.125rem', color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: 1.8 }}>
-              Contamos con una aeronave de primer nivel con capacidad para 5 a 6 pasajeros, equipada con tecnología de última generación para garantizar un viaje placentero y seguro.
+              {t('galDesc1')}
             </p>
             <p style={{ fontSize: '1.125rem', color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: 1.8 }}>
-              El interior está diseñado pensando en tu comodidad, permitiéndote relajarte o continuar con tus negocios mientras volamos hacia tu próximo destino en el norte argentino.
+              {t('galDesc2')}
             </p>
             
             <ul style={{ listStyle: 'none', padding: 0 }}>
-              {['Vuelos ejecutivos', 'Traslados turísticos privados', 'Viajes de urgencia'].map((item, index) => (
+              {[t('galList1'), t('galList2'), t('galList3')].map((item, index) => (
                 <li key={index} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', fontWeight: 500 }}>
                   <span style={{ color: 'var(--brand-red)' }}>✓</span> {item}
                 </li>

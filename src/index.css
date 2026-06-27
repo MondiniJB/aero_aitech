@@ -162,3 +162,43 @@ button {
   animation: dropdownSlide 0.2s ease-out forwards;
   transform-origin: top;
 }
+
+/* Responsive Hero */
+.hero-slider {
+  height: 60vh;
+  min-height: 450px;
+}
+.hero-glass {
+  padding: 3rem 2rem;
+}
+.hero-btn {
+  flex: 0 1 auto;
+  width: auto;
+}
+
+/* Responsive Utilities */
+@media (max-width: 900px) {
+  .desktop-only {
+    display: none !important;
+  }
+  
+  .hero-slider {
+    height: 45vh;
+    min-height: 250px;
+  }
+  
+  .hero-glass {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero-btn {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+@media (min-width: 901px) {
+  .mobile-only {
+    display: none !important;
+  }
+}

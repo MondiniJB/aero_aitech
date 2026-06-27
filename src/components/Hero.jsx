@@ -211,10 +211,9 @@ const Hero = () => {
     <section style={{ backgroundColor: 'var(--bg-primary)' }}>
       {/* Banner de Imagen Superior con Carrusel Deslizante Infinito */}
       <div 
+        className="hero-slider"
         style={{
           width: '100%',
-          height: '60vh',
-          minHeight: '450px',
           position: 'relative',
           overflow: 'hidden'
         }}
@@ -304,11 +303,10 @@ const Hero = () => {
       <div className="container" style={{ position: 'relative', marginTop: '-6rem', paddingBottom: '4rem', zIndex: 10 }}>
         
         <div 
-          className="glass animate-fade-in"
+          className="glass hero-glass animate-fade-in"
           style={{ 
             backgroundColor: 'var(--glass-bg)', 
             borderRadius: '16px', 
-            padding: '3rem 2rem', 
             boxShadow: 'var(--shadow-lg)',
             border: '1px solid rgba(0,0,0,0.05)'
           }}
@@ -351,7 +349,7 @@ const Hero = () => {
               iconColor="var(--brand-blue)" 
             />
 
-            <button type="submit" className="btn-primary" style={{ flex: '0 1 auto', height: '54px', padding: '0 2.5rem', fontSize: '1.125rem' }}>
+            <button type="submit" className="btn-primary hero-btn" style={{ height: '54px', padding: '0 2.5rem', fontSize: '1.125rem' }}>
               {t('heroQuoteBtn')}
             </button>
             

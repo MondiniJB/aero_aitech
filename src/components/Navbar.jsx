@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Plane, ChevronDown, Sun, Moon } from 'lucide-react';
+import { Plane, ChevronDown, Sun, Moon, Menu, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 
@@ -138,6 +138,7 @@ const LanguageSwitcher = () => {
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -185,9 +186,10 @@ const Navbar = () => {
         </a>
 
         {/* Menu (Text + Utilities) */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
           
-          <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+          {/* Desktop Text Links */}
+          <div className="desktop-only" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
             <a href="#servicios" className="nav-link" style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '1rem' }}>{t('navServices')}</a>
             <a href="#galeria" className="nav-link" style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '1rem' }}>{t('navAircraft')}</a>
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '0.6rem 1.75rem', fontSize: '1rem' }}>
@@ -195,13 +197,58 @@ const Navbar = () => {
             </a>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
             <LanguageSwitcher />
             <ThemeToggleButton />
+            <button 
+              className="mobile-only"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'transparent',
+                border: '1px solid #e2e8f0',
+                padding: '0.5rem',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                backgroundColor: 'var(--surface-color)',
+                color: 'var(--text-primary)',
+                transition: 'all 0.2s ease',
+                marginLeft: '0.25rem'
+              }}
+              aria-label="Menu"
+            >
+              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
           
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="mobile-only animate-dropdown" style={{ 
+          position: 'absolute', 
+          top: '100%', 
+          left: 0, 
+          width: '100%', 
+          backgroundColor: 'var(--surface-color)',
+          borderTop: '1px solid var(--glass-border)',
+          boxShadow: 'var(--shadow-md)',
+          padding: '1.5rem 2rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.5rem',
+          zIndex: 40
+        }}>
+          <a href="#servicios" onClick={() => setIsMobileMenuOpen(false)} style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '1.125rem', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.5rem' }}>{t('navServices')}</a>
+          <a href="#galeria" onClick={() => setIsMobileMenuOpen(false)} style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '1.125rem', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.5rem' }}>{t('navAircraft')}</a>
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)} className="btn-primary" style={{ padding: '0.875rem', fontSize: '1rem', textAlign: 'center', marginTop: '0.5rem', width: '100%' }}>
+            {t('navBook')}
+          </a>
+        </div>
+      )}
     </nav>
   );
 };

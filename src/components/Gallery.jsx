@@ -6,7 +6,7 @@ const Gallery = () => {
   return (
     <section id="galeria" style={{ padding: '6rem 0', backgroundColor: 'var(--bg-primary)' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '4rem', alignItems: 'center' }}>
           
           <div style={{ position: 'relative' }}>
             <div 
